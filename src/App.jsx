@@ -8,9 +8,14 @@ const App = () => {
     const [languages, setLanguages] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3005/languages').then((response) => {
-            setLanguages(response.data);
-        });
+        axios
+            .get('http://localhost:3005/languages')
+            .then((response) => {
+                setLanguages(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching languages:', error);
+            });
     });
 
     // Function to render table rows
